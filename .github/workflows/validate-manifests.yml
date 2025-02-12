@@ -15,15 +15,18 @@ jobs:
     strategy:
       matrix:
         manifest: [k8s/deployment.yaml, k8s/service.yaml]
-
       fail-fast: false
-
-    container:
-      image: ghcr.io/yannh/kubeconform:latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Download kubeconform
+        run: |
+          wget https://github.com/yannh/kubeconform/releases/download/v0.6.4/kubeconform-linux-amd64.tar.gz
+          tar xf kubeconform-linux-amd64.tar.gz
+          sudo mv kubeconform /usr/local/bin/
+          rm kubeconform-linux-amd64.tar.gz
 
       - name: Validate manifest
         id: validate
