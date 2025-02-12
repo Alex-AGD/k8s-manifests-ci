@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task18
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task18
+  template:
+    metadata:
+      labels:
+        app: task18
+    spec:
+      containers:
+      - name: task18
+        image: nginx:1.19
+        ports:
+        - containerPort: 80
