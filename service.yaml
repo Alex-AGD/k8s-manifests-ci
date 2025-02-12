@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: task18
+  name: task18-test1
   namespace: default
 spec:
   selector:
-    app: task18
+    app: task18-test1
   ports:
   - port: 80
     targetPort: 80
